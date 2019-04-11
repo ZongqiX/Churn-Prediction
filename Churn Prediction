@@ -22,6 +22,7 @@ fit = rpart(stay ~ .,
             control=rpart.control(xval=0, minsplit=100))
 fit
 
+#plot the tree
 plot(fit, 
      uniform=T, 
      branch=0.5, 
@@ -29,6 +30,7 @@ plot(fit,
      main="The Stay Tree", 
      margin=0.3)
 
+#label
 text(fit,  use.n=TRUE, 
      all=TRUE, 
      fancy=F, 
@@ -38,11 +40,12 @@ text(fit,  use.n=TRUE,
 churn.pred = predict(fit, churn.train, type="class")
 churn.actual = churn.train$stay
 
+#performance
 confusion.matrix = table(churn.pred, churn.actual)  
-confusionMatrix(confusion.matrix, leave = 'pos')
+confusionMatrix(confusion.matrix, positive = 'leave')
 
 #for the test data set
-confusionMatrix(table(pred=predict(fit, churn.test,type="class"),actual = churn.test$stay), leave = 'pos')
+confusionMatrix(table(pred=predict(fit, churn.test,type="class"),actual = churn.test$stay), positive = 'leave')
 
 
 
