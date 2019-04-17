@@ -1,4 +1,3 @@
-setwd("C:/Users/xzq/Desktop/SQL/R")
 library(readr)
 dsbchurn <- read.csv("DSBchurn.csv")
 dsbchurn <- data.frame(dsbchurn)
